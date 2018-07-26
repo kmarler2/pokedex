@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card } from '../../components/Card/card.js';
-import { addSelectedType } from '../../actions';
+import { addSelectedType, addPokemonData } from '../../actions';
 import { connect } from 'react-redux';
 import { pokemonFetch } from '../../Utilities/ApiCalls/apiCalls.js';
 
@@ -14,7 +14,7 @@ class Header extends Component {
   addType = (event) => {
     const selectedType = event.target.innerText;
     this.props.handleSelectedType(selectedType);
-    this.findType()
+    this.findType();
   }
 
   findType = () => {
@@ -30,9 +30,9 @@ class Header extends Component {
 
   fetchPokemon = () => {
     if(this.state.ids) {
-    this.state.ids.forEach(async (id) => {
+    const allPokemon = this.state.ids.forEach( async id => {
       const pokemon = await pokemonFetch(id);
-      console.log(pokemon)
+      this.props.handlePokemonData(pokemon);
     })
   }
 }
@@ -60,7 +60,8 @@ class Header extends Component {
 })
 
   export const mapDispatchToProps = dispatch => ({
-    handleSelectedType: selectedType => dispatch(addSelectedType(selectedType))
+    handleSelectedType: selectedType => dispatch(addSelectedType(selectedType)),
+    handlePokemonData: data => dispatch(addPokemonData(data))
   })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
