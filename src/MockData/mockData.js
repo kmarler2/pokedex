@@ -1,2 +1,7 @@
-export const mockData = 
+export const mockData = [
+{
+  name: 'huffle',
+  weight: 72
+}
+]
 
