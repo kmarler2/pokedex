@@ -3,7 +3,7 @@ import './App.css';
 import FakeContainer from '../../containers/FakeContainer/';
 import { pokemonFetch } from '../../Utilities/ApiCalls/apiCalls';
 import { connect } from 'react-redux';
-import { addFetchData } from '../../actions';
+import { addTypeData } from '../../actions';
 
 
 class App extends Component {
@@ -13,18 +13,10 @@ class App extends Component {
     } 
   }
 
-  componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData = async () => {
-    try {
+  async componentDidMount() {
     const fetchData = await pokemonFetch();
-    await this.props.handleFetchData(fetchData);
-  } catch(error) {
-    console.log(error)
+    this.props.handleTypeData(fetchData);
   }
-  } 
 
   render() {
     return (
@@ -35,12 +27,8 @@ class App extends Component {
   }
 }
 
-export const mapDispatchToProps = dispatch => {
-  handleFetchData: (fetchData) => dispatch(addFetchData(fetchData))
-}
-
-export const mapStateToProps = state => ({
-  pokemonData: state.fetchedData
+export const mapDispatchToProps = dispatch => ({
+  handleTypeData: (types) => dispatch(addTypeData(types))
 })
 
-export default connect(mapStateToProps, null)(App)
+export default connect(null, mapDispatchToProps)(App)

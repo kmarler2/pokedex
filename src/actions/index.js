@@ -1,4 +1,4 @@
-export const addFetchData = data => ({
-  type: 'ADD_DATA',
-  data
+export const addTypeData = types => ({
+  type: 'ADD_TYPES',
+  types
 })

@@ -11,3 +11,9 @@ export const pokemonFetch = async () => {
   }
 }
 
+// export const pokemonFetch = () => {
+//   const url = 'http://localhost:3001/types';
+//   return fetch(url)
+//   .then((response) => response.json())
+//   .then((data) => data)
+// }
