@@ -4,7 +4,7 @@ import FakeContainer from '../../containers/FakeContainer/';
 import { pokemonTypeFetch, pokemonFetch } from '../../Utilities/ApiCalls/apiCalls';
 import { connect } from 'react-redux';
 import { addTypeData } from '../../actions';
-
+import { Header } from '../Header/header.js';
 
 class App extends Component {
   constructor() {
@@ -22,6 +22,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className='header'> POKéDEX </h1>
+        <Header />
       </div>
     );
   }
