@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import FakeContainer from '../../containers/FakeContainer/';
 import { pokemonFetch } from '../../Utilities/ApiCalls/apiCalls';
+import { connect } from 'react-redux';
+import { addFetchData } from '../../actions';
 
 
 class App extends Component {
@@ -18,11 +20,9 @@ class App extends Component {
   fetchData = async () => {
     try {
     const fetchData = await pokemonFetch();
-    await this.setState({
-      fetchData 
-    })
+    await this.props.handleFetchData(fetchData);
   } catch(error) {
-    console.log('oops')
+    console.log(error)
   }
   } 
 
@@ -35,9 +35,12 @@ class App extends Component {
   }
 }
 
+export const mapDispatchToProps = dispatch => {
+  handleFetchData: (fetchData) => dispatch(addFetchData(fetchData))
+}
+
 export const mapStateToProps = state => ({
   pokemonData: state.fetchedData
 })
 
-
-export default App;
+export default connect(mapStateToProps, null)(App)

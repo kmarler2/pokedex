@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import fakeReducer from './fake-reducer'
+import addFetchDataReducer from './addFetchDataReducer.js';
 
 const rootReducer = combineReducers({
-  fake: fakeReducer
+  pokemonData: addFetchDataReducer
 })
 
 export default rootReducer

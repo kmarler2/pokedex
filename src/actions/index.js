@@ -1,1 +1,4 @@
-export const fakeAction = () => ({ type: 'FAKE'})
+export const addFetchData = data => ({
+  type: 'ADD_DATA',
+  data
+})
