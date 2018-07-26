@@ -17,12 +17,12 @@ class App extends Component {
 
   fetchData = async () => {
     try {
-    const fetchedData = await pokemonFetch();
-    this.setState({
-      fetchedData
+    const fetchData = await pokemonFetch();
+    await this.setState({
+      fetchData 
     })
   } catch(error) {
-    console.log(error)
+    console.log('oops')
   }
   } 
 
