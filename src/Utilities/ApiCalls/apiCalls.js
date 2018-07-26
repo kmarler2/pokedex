@@ -15,7 +15,6 @@ export const pokemonFetch = async (id) => {
   try {
     const url = `http://localhost:3001/pokemon/${id}`;
     const response = await fetch(url);
-    console.log(response)
     const pokemonData = await response.json();
     return pokemonData
   } catch(error) {

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import addTypesReducer from './addTypesReducer.js';
-import addClickTypeReducer from './addClickTypeReducer';
+import addSelectedTypeReducer from './addSelectedTypeReducer';
 
 const rootReducer = combineReducers({
   pokemonTypes: addTypesReducer,
-  selectedType: addClickTypeReducer
+  selectedType: addSelectedTypeReducer
 })
 
 export default rootReducer;

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import FakeContainer from '../../containers/FakeContainer/';
 import { pokemonTypeFetch, pokemonFetch } from '../../Utilities/ApiCalls/apiCalls';
 import { connect } from 'react-redux';
 import { addTypeData } from '../../actions';
-import { Header } from '../Header/header.js';
+import Header from '../Header/header.js';
+import { CardContainer } from '../../containers/CardContainer/cardContainer.js';
 
 class App extends Component {
   constructor() {
-  super();
+    super();
     this.state = {
-    } 
+
+    }
   }
 
   async componentDidMount() {
@@ -23,13 +24,19 @@ class App extends Component {
       <div className='App'>
         <h1 className='header'> POKéDEX </h1>
         <Header />
+        <CardContainer />
       </div>
     );
   }
 }
 
+export const mapStateToProps = state => ({
+  selectedType: state.selectedType,
+  pokemonTypes: state.pokemonTypes
+})
+
 export const mapDispatchToProps = dispatch => ({
   handleTypeData: (types) => dispatch(addTypeData(types))
 })
 
-export default connect(null, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App)
